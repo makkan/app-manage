@@ -1,5 +1,5 @@
 Puppet::Type.type(:tcruntime_instance).provide(:tcruntime_instance) do
-  INSTANCE_TCRUNTIME_CTL = '/bin/tcruntime-ctl.sh'
+  INSTANCE_TCRUNTIME_CTL = '\bin\tcruntime-ctl.bat'
 
   confine :true => true
 
@@ -19,8 +19,8 @@ Puppet::Type.type(:tcruntime_instance).provide(:tcruntime_instance) do
   def create
     # We create the command here so we can get the java_home variable from the manifest
     resource = @resource
-    Puppet::Provider.has_command(:tcruntime_instance, "/opt/vmware/vfabric-tc-server-standard/tcruntime-instance.sh" ) do
-      environment :HOME => "/opt/vmware/vfabric-tc-server-standard/"
+    Puppet::Provider.has_command(:tcruntime_instance, "D:\hmonline\servers\tcserver\tcruntime-instance.bat" ) do
+      environment :HOME => "D:\hmonline\servers\tcserver"
       environment :JAVA_HOME => resource[:java_home]
     end
 
